@@ -1,4 +1,4 @@
 
 .PHONY: vnc
 vnc:
-	go run . 192.168.2.24 5902 "bring"
+	go run . `ipconfig getifaddr en0` 5902 "password"
