@@ -2,27 +2,23 @@ package main
 
 import (
 	"fmt"
-	"fyne.io/fyne/app"
-	"fyne.io/fyne/widget"
-	vnc "github.com/amitbet/vnc2video"
 	"os"
 	"path/filepath"
-	"strings"
+
+	"fyne.io/fyne"
+	"fyne.io/fyne/app"
+	"fyne.io/fyne/layout"
+	"fyne.io/fyne/widget"
+	vnc "github.com/amitbet/vnc2video"
 )
 
-const (
-	defaultWidth  = 1024
-	defaultHeight = 768
-)
-
-func createVncConfig(username, password string) *vnc.ClientConfig {
+func createVncConfig(password string) *vnc.ClientConfig {
 	cchServer := make(chan vnc.ServerMessage, 1)
 	cchClient := make(chan vnc.ClientMessage, 1)
 	errorCh := make(chan error, 1)
 
 	return &vnc.ClientConfig{
 		SecurityHandlers: []vnc.SecurityHandler{
-			//&vnc.ClientAuthATEN{Username: []byte(username), Password: []byte(password)},
 			&vnc.ClientAuthVNC{Password: []byte(password)},
 			&vnc.ClientAuthNone{},
 		},
@@ -53,22 +49,23 @@ func main() {
 		os.Exit(1)
 	}
 
-	config := createVncConfig(os.Args[3], os.Args[4])
+	config := createVncConfig(os.Args[3])
 	vncDisplay := NewVncDisplay(os.Args[1], os.Args[2], config)
 
 	vncApp := app.New()
-	title := fmt.Sprintf("%s (%s:%s)", strings.ToUpper(os.Args[1]), os.Args[2], os.Args[3])
+	title := fmt.Sprintf("VNC (%s:%s)", os.Args[1], os.Args[2])
 	w := vncApp.NewWindow(title)
 
 	w.CenterOnScreen()
-	w.SetContent(widget.NewVBox(
-		widget.NewHBox(
-			widget.NewButton("Quit", func() {
-				vncApp.Quit()
-			}),
-		),
-		vncDisplay,
-	))
+	top := widget.NewHBox(
+		widget.NewButton("Quit", func() {
+			vncApp.Quit()
+		}),
+	)
+	content := fyne.NewContainerWithLayout(layout.NewBorderLayout(top, nil, nil, nil),
+		top, vncDisplay)
+	w.SetContent(content)
 
+	w.Resize(fyne.NewSize(1024, 768))
 	w.ShowAndRun()
 }

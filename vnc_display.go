@@ -16,6 +16,11 @@ import (
 	"github.com/sirupsen/logrus"
 )
 
+const (
+	minWidth  = 32
+	minHeight = 24
+)
+
 // Custom Widget that represents the remote computer being controlled
 type VncDisplay struct {
 	widget.BaseWidget
@@ -45,9 +50,10 @@ func NewVncDisplay(hostname, port string, config *vnc.ClientConfig) *VncDisplay 
 	b.screenImage = client.Canvas
 
 	go func() {
-		framerate := 12
+		framerate := 10
 		period := time.Duration(1000/framerate) * time.Millisecond
 		update := throttle.ThrottleFunc(period, true, func() {
+			//logrus.Infof("Update Screen:  %s", time.Now())
 			b.updateDisplay()
 		})
 		defer update.Stop()
@@ -60,9 +66,8 @@ func NewVncDisplay(hostname, port string, config *vnc.ClientConfig) *VncDisplay 
 			case msg := <-config.ServerMessageCh:
 				logrus.Tracef("Received server message type:%v msg:%v", msg.Type(), msg)
 				if msg.Type() == vnc.FramebufferUpdateMsgType {
-					logrus.Debug("Received FramebufferUpdateMsg:  %s", time.Now())
+					logrus.Debugf("Received FramebufferUpdateMsg:  %s", time.Now())
 					reqMsg := vnc.FramebufferUpdateRequest{Inc: 1, X: 0, Y: 0, Width: client.Width(), Height: client.Height()}
-					//client.ResetAllEncodings()
 					reqMsg.Write(client)
 					update.Trigger()
 				}
@@ -95,7 +100,7 @@ func createVncClient(hostname, port string, ccfg *vnc.ClientConfig) *vnc.ClientC
 	cc.SetEncodings([]vnc.EncodingType{
 		vnc.EncCursorPseudo,
 		vnc.EncPointerPosPseudo,
-		//vnc.EncTight,
+		vnc.EncTight,
 		vnc.EncZRLE,
 		vnc.EncCopyRect,
 		vnc.EncHextile,
@@ -109,8 +114,8 @@ func createVncClient(hostname, port string, ccfg *vnc.ClientConfig) *vnc.ClientC
 func (b *VncDisplay) MinSize() fyne.Size {
 	b.ExtendBaseWidget(b)
 	return fyne.Size{
-		Width:  b.Display.Bounds().Dx(),
-		Height: b.Display.Bounds().Dy(),
+		Width:  minWidth,
+		Height: minHeight,
 	}
 }
 
