@@ -3,8 +3,6 @@ fyne.io/fyne v1.2.0-beta1/go.mod h1:orFQru4Lbr+wa/yGV+JRQnJV3CD6pb8wRFLV93Gky58=
 github.com/3d0c/gmf v0.0.0-20181011122539-af78d7462257/go.mod h1:vFu/aQImUVU4s38rUuJr6KrEdkMOOnPIGE5ThNUavtg=
 github.com/Kodeworks/golang-image-ico v0.0.0-20141118225523-73f0f4cfade9/go.mod h1:7uhhqiBaR4CpN0k9rMjOtjpcfGd6DG2m04zQxKnWQ0I=
 github.com/akavel/rsrc v0.8.0/go.mod h1:uLoCtb9J+EyAqh+26kdrTgmzRBFPGOolLWKpdxkKq+c=
-github.com/amitbet/vnc2video v0.0.0-20190616012314-9d50b9dab1d9 h1:vYU4bpShNx2qwirTqqnGZ2wYicExu4q2lQNP4u7xafM=
-github.com/amitbet/vnc2video v0.0.0-20190616012314-9d50b9dab1d9/go.mod h1:zc4FYPGD82PqOVHtzkQiz7zHHxumVoVQ4Ij0RzvOIJQ=
 github.com/boz/go-throttle v0.0.0-20160922054636-fdc4eab740c1 h1:1fx+RA5lk1ZkzPAUP7DEgZnVHYxEcHO77vQO/V8z/2Q=
 github.com/boz/go-throttle v0.0.0-20160922054636-fdc4eab740c1/go.mod h1:z0nyIb42Zs97wyX1V+8MbEFhHeTw1OgFQfR6q57ZuHc=
 github.com/davecgh/go-spew v1.1.0/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSsI+c5H38=
@@ -12,6 +10,8 @@ github.com/davecgh/go-spew v1.1.1 h1:vj9j/u1bqnvCEfJOwUhtlOARqs3+rkHYY13jYWTU97c
 github.com/davecgh/go-spew v1.1.1/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSsI+c5H38=
 github.com/deluan/bring v0.0.7 h1:O0EYCfw2H+gn0KTEoiuzYnSazFayJtRgTQvw3LcVl44=
 github.com/deluan/bring v0.0.7/go.mod h1:ECbFMvyHpsFx2Um4920QNOyQjJEH+lR1hJcfqGhFqeE=
+github.com/deluan/vnc2video v0.0.0-20210101045232-81fb4f50aef5 h1:XWeW0ZwalTSS1ks3j6CNRcvz+VX0G13lsdVYypd3IEY=
+github.com/deluan/vnc2video v0.0.0-20210101045232-81fb4f50aef5/go.mod h1:zc4FYPGD82PqOVHtzkQiz7zHHxumVoVQ4Ij0RzvOIJQ=
 github.com/fsnotify/fsnotify v1.4.7 h1:IXs+QLmnXW2CcXuY+8Mzv/fWEsPGWxqefPtCP5CnV9I=
 github.com/fsnotify/fsnotify v1.4.7/go.mod h1:jwhsz4b93w/PPRr/qN1Yymfu8t87LnFCMoQvtojpjFo=
 github.com/go-gl/gl v0.0.0-20181026044259-55b76b7df9d2 h1:78Hza2KHn2PX1jdydQnffaU2A/xM0g3Nx1xmMdep9Gk=

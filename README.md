@@ -2,8 +2,8 @@
 
 ## TODO
 - CPU usage. Rate limit screen updates?
-- Flash whole screen
-- Color mismatch
+- Why flash whole screen on start?
+- ~~Color mismatch~~
 - Send keys/mouse
 
 - Handle Caps Lock ([waiting Fyne support](https://github.com/fyne-io/fyne/issues/552))

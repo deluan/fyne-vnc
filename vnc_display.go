@@ -132,7 +132,7 @@ func (b *VncDisplay) updateDisplay() {
 	//	panic(err)
 	//}
 	//defer f.Close()
-	//jpeg.Encode(f, img, nil)
+	//png.Encode(f, img)
 }
 
 func (b *VncDisplay) SetDisplay(img image.Image) {

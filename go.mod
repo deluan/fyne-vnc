@@ -9,3 +9,7 @@ require (
 	github.com/deluan/bring v0.0.7
 	github.com/sirupsen/logrus v1.4.2
 )
+
+replace github.com/amitbet/vnc2video => github.com/deluan/vnc2video v0.0.0-20210101045232-81fb4f50aef5
+
+//replace github.com/amitbet/vnc2video => ../vnc2video
